@@ -1,5 +1,38 @@
 This repo contains all my customaizations.
 
+## Python Environment Setup with uv
+
+### Create Centralized Virtual Environment
+```bash
+uv venv "$HOME\.uv_envs\<env_name>" --python 3.11.15
+```
+
+### PowerShell Activation Helper
+
+Add to `$PROFILE` (edit via `notepad $PROFILE`):
+
+```powershell
+function VenvActivate {
+    param([string]$EnvName)
+    
+    $TargetScript = "$HOME\.uv_envs\$EnvName\Scripts\Activate.ps1"
+    
+    if (Test-Path $TargetScript) {
+        & $TargetScript
+    } else {
+        Write-Error "Environment '$EnvName' not found in $HOME\.uv_envs\"
+    }
+}
+
+Set-Alias -Name act -Value VenvActivate
+```
+
+### Usage
+```powershell
+act <envname>
+uv pip install -r requirements.txt
+```
+
 # Neovim Configuration for VS Code (vscode-neovim)
 
 This repository contains my personal Neovim configuration, specifically optimized for use with the **vscode-neovim** extension in Visual Studio Code.
