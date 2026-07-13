@@ -70,3 +70,32 @@ map('v', '<Leader>gh', function() vs('workbench.action.quickchat.toggle') end, {
 -- ==========================================
 map('o', 'l', '$', { desc = 'End of line' })
 map('o', 'h', '^', { desc = 'Beginning of line' })
+
+
+-- ==========================================
+-- Folding Keybindings (Normal Mode)
+-- ==========================================
+map('n', 'zc', function() vs('editor.fold') end, { desc = 'Fold (collapse) at cursor' })
+map('n', 'zC', function() vs('editor.foldRecursively') end, { desc = 'Fold recursively at cursor' })
+map('n', 'zo', function() vs('editor.unfold') end, { desc = 'Unfold (expand) at cursor' })
+map('n', 'zO', function() vs('editor.unfoldRecursively') end, { desc = 'Unfold recursively at cursor' })
+
+-- ==========================================
+-- Additional useful folding keybindings
+-- ==========================================
+map('n', 'zM', function() vs('editor.foldAll') end, { desc = 'Fold all' })
+map('n', 'zR', function() vs('editor.unfoldAll') end, { desc = 'Unfold all' })
+map('n', 'za', function() vs('editor.toggleFold') end, { desc = 'Toggle fold at cursor' })
+
+-- ==========================================
+-- Rename
+-- ==========================================
+map('n', '<Leader>rn', function() vs('editor.action.rename') end, { desc = 'Rename symbol' })
+
+-- ==========================================
+-- References / Definitions
+-- ==========================================
+map('n', 'gs', function() vs('editor.action.goToReferences') end, { desc = 'Go to references' })
+map('n', 'gi', function() vs('editor.action.goToImplementation') end, { desc = 'Go to implementation' })
+map('n', 'gt', function() vs('editor.action.goToTypeDefinition') end, { desc = 'Go to type definition' })
+map('n', 'K', function() vs('editor.action.showHover') end, { desc = 'Show hover' })
