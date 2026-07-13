@@ -25,6 +25,17 @@ function VenvActivate {
 }
 
 Set-Alias -Name act -Value VenvActivate
+
+# Tab completion for act
+Register-ArgumentCompleter -CommandName VenvActivate -ParameterName EnvName -ScriptBlock {
+    param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+    
+    Get-ChildItem "$HOME\.uv_envs\" -Directory | 
+        Where-Object { $_.Name -like "$wordToComplete*" } | 
+        ForEach-Object { 
+            [System.Management.Automation.CompletionResult]::new($_.Name, $_.Name, 'ParameterValue', $_.Name) 
+        }
+}
 ```
 
 ### Usage
